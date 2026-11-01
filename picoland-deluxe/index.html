@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no" />
+<meta name="theme-color" content="#182d37" />
+<title>PicoLand Deluxe · Edición completa</title>
+<style>
+:root{--dark:#162c36;--deep:#315857;--leaf:#779a7a;--pale:#d5e9ab;--cream:#f2f8d6;--line:#89b29b}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#345d62 0,#172d37 58%,#101e28);color:var(--cream);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}body{overflow-x:hidden}.app{max-width:820px;margin:auto;padding:12px 14px 22px}.masthead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}.brand{display:flex;align-items:center;gap:10px}.logo{width:39px;height:39px;border:2px solid #c8e2b0;display:grid;place-items:center;background:var(--deep);border-radius:10px;box-shadow:3px 3px #101b24;font-weight:900;font-size:23px}.brandname{font-weight:900;font-size:clamp(16px,4.5vw,22px);letter-spacing:2px;line-height:1}.eyebrow{font-size:9px;color:#bdd3b8;letter-spacing:2.3px;margin-bottom:5px}.mast-actions{display:flex;gap:6px}.tool{border:1px solid #789f99;color:#d9f1c1;background:#294950;padding:9px 10px;border-radius:8px;font-family:inherit;font-size:11px;font-weight:bold;cursor:pointer}.tool:active{background:#456f69}.frame{position:relative;background:#102c32;border:6px solid #7ba29b;padding:5px;border-radius:14px;box-shadow:0 14px 24px #07111966,0 0 0 2px #142731, inset 0 0 0 2px #1d3c42;overflow:hidden}.screen{position:relative;aspect-ratio:10/9;width:100%;background:#cfe4a7;border-radius:3px;overflow:hidden}.screen:after{content:"";pointer-events:none;position:absolute;inset:0;opacity:.11;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,#122c33 4px);mix-blend-mode:multiply}canvas{display:block;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;touch-action:none}.overlay{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;padding:16px;background:#172f35bb;text-align:center;z-index:2}.overlay.hidden{display:none}.panel{background:#d5e9ab;color:#172f36;border:3px solid #2b5552;box-shadow:7px 7px #0c1a2099;padding:clamp(12px,3.5vw,22px);width:min(90%,350px)}.panel h1{font-size:clamp(19px,5.2vw,31px);margin:0 0 9px;letter-spacing:3px;text-shadow:2px 2px #a4c38d}.panel p{font-size:clamp(10px,2.6vw,13px);line-height:1.5;margin:6px 0 13px}.primary{font:900 13px ui-monospace,monospace;letter-spacing:1px;color:#e4f5c7;background:#21454b;border:0;padding:11px 16px;box-shadow:4px 4px #7fa481;cursor:pointer}.primary:active{transform:translate(2px,2px);box-shadow:2px 2px #7fa481}.statusline{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#b7d3be;letter-spacing:1px;padding:10px 2px 3px}.statusline b{color:#e6f3cd}.progress{height:4px;background:#335b60;border-radius:3px;overflow:hidden;margin-bottom:11px}.progress>span{display:block;width:0;height:100%;background:#bbd99d;transition:width .1s}.controls{user-select:none;-webkit-user-select:none;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:12px;padding:3px 4px 8px}.dpad{display:flex;gap:14px;align-items:center}.actions{display:flex;justify-content:flex-end;align-items:center;gap:17px}.touch{appearance:none;-webkit-appearance:none;border:2px solid #a6ceae;background:linear-gradient(#476d6b,#26484e);color:#e2f4c8;box-shadow:0 5px 0 #0c1d26,0 8px 14px #0005;border-radius:16px;width:clamp(58px,16vw,77px);height:clamp(58px,16vw,77px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:inherit;font-weight:900;touch-action:none;cursor:pointer}.touch .big{font-size:23px;line-height:1}.touch .hint{font-size:8px;font-weight:normal;letter-spacing:1px}.touch.action{border-radius:50%;background:linear-gradient(#789d75,#3d6a64)}.touch.active,.touch:active{transform:translateY(4px);box-shadow:0 1px 0 #0c1d26,0 2px 5px #0006;background:#8fb493;color:#132e35}.footnote{border-top:1px solid #426669;margin-top:4px;padding:10px 2px;color:#98b9b3;display:flex;justify-content:space-between;gap:10px;font-size:10px;line-height:1.5}.footnote strong{color:#d0e5b9}.privacy{max-width:380px}.rotate{display:none}@media(min-width:620px){.app{padding-top:18px}.frame{max-width:670px;margin:auto}.statusline,.progress,.controls,.footnote{max-width:670px;margin-left:auto;margin-right:auto}.controls{padding-top:12px}}@media(orientation:landscape) and (max-height:520px){.app{max-width:1000px;padding:3px 8px}.masthead{margin:0 0 4px}.brand .eyebrow{display:none}.logo{height:25px;width:25px;font-size:14px}.brandname{font-size:14px}.tool{padding:5px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:9px;align-items:center}.frame{margin:0;max-width:none}.screen{max-height:calc(100dvh - 64px);aspect-ratio:10/9;width:auto;margin:auto}.frame{padding:3px;border-width:4px}.right{align-self:stretch;display:flex;flex-direction:column;justify-content:center}.controls{display:grid;grid-template-columns:1fr;gap:30px;padding:0}.dpad,.actions{justify-content:center;gap:8px}.touch{height:55px;width:55px}.statusline{padding:4px 2px}.progress{margin:0 0 7px}.footnote{display:none}.panel{padding:10px}.panel p{margin:4px 0 9px}}@media(max-width:360px){.app{padding:7px}.controls{gap:5px}.dpad,.actions{gap:8px}.touch{width:56px;height:56px}.touch .hint{font-size:7px}.footnote{font-size:9px}}
+
+.panel .secondary{display:block;margin:12px auto 0;border:1px solid #21454b;color:#21454b;background:transparent;padding:8px 14px;font:700 10px ui-monospace,monospace;letter-spacing:1px;cursor:pointer}.panel .secondary[hidden]{display:none}.tiny{margin-top:12px;font:700 9px ui-monospace,monospace;letter-spacing:1px;opacity:.7}.touch{user-select:none;-webkit-tap-highlight-color:transparent}.frame{box-shadow:0 10px 0 #10272e,0 22px 38px #06141788}.brandname{white-space:nowrap}.tool{white-space:nowrap}@media(max-width:410px){.eyebrow{font-size:8px}.brandname{letter-spacing:1px}.mast-actions{gap:3px}.tool{font-size:9px;padding:8px 7px}}@media(orientation:landscape) and (max-height:520px){.tiny{display:none}}
+/* Art direction: deep-ink four-tone pixel-art Game Boy edition */
+:root{--dark:#172c22;--deep:#365b3c;--leaf:#7b9f71;--pale:#d4e8a8;--cream:#f5f8dd;--line:#5f8969}
+html,body{overscroll-behavior:none}html,body{background:radial-gradient(circle at 50% 4%,#dceebc 0%,#aec99b 45%,#78977e 100%);color:var(--dark)}
+.app{max-width:860px}
+.masthead{padding:10px 15px;background:#d5e8ab;border:3px solid #244a35;box-shadow:5px 5px 0 #335c4490;margin:4px 0 16px;border-radius:2px}
+.logo{border:3px solid #233c2c;background:#42754e;border-radius:4px;color:#f5f8dd;box-shadow:3px 3px 0 #243f30}
+.eyebrow{color:#385744;font-weight:800;font-size:9px}
+.brandname{color:#173522;font-size:clamp(18px,4vw,24px);text-shadow:2px 2px #8fb47d}
+.tool{border:2px solid #21432f;border-radius:4px;background:#477551;color:#f4ffdf;box-shadow:2px 2px 0 #234030}
+.frame{background:#254934;border:6px solid #376e4c;border-radius:7px;box-shadow:0 9px 0 #254132,0 17px 35px #22372a70,inset 0 0 0 2px #afc693}
+.screen{background:#d4e8a8;border-radius:1px}
+.screen:after{opacity:.06}
+.panel{border:4px solid #274836;background:#e3efc2;color:#1c3f2e;box-shadow:7px 7px #182d2299;}
+.panel h1{letter-spacing:2px;text-shadow:2px 2px #a4c990}
+.primary{background:#37643e;color:#eef8d6;box-shadow:4px 4px #72956c}
+.statusline{color:#2f5039;font-weight:800}
+.statusline b{color:#183725}
+.progress{background:#7ca57c;border:1px solid #315a41}
+.progress>span{background:#2d5e3c}
+.touch{border:3px solid #254632;background:linear-gradient(155deg,#5e906a,#3f6e50);color:#f0f8d9;border-radius:6px;box-shadow:0 5px 0 #244a33,0 8px 12px #34523b55}
+.touch.action{border-radius:50%;background:linear-gradient(#82aa7a,#528661)}
+.touch.active,.touch:active{color:#163725;background:#b9d69a;box-shadow:0 1px 0 #28503a}
+.footnote{color:#264e38;border-top:2px solid #729b79;font-weight:600}
+.footnote strong{color:#183b27}
+@media(max-width:580px){.masthead{padding:7px 8px;margin-bottom:10px}}
+@media(orientation:landscape) and (max-height:520px){.masthead{padding:3px 8px;margin:0 0 4px}}
+
+
+/* Iteration 2: landscape gamepad occupies a REAL grid column, never below viewport. */
+@media (orientation:landscape) and (max-height:520px){
+  .app{width:100%;max-width:1080px;padding:3px 8px}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:8px;align-items:center}
+  .layout>div:first-child{min-width:0}
+  .right{align-self:center;min-width:0}
+  .frame{width:100%;max-width:none;margin:0;padding:3px;border-width:4px}
+  .screen{height:calc(100dvh - 62px);width:auto;max-width:100%;max-height:340px;aspect-ratio:10/9;margin:auto}
+  .controls{display:flex;flex-direction:column;gap:19px;padding:0;align-items:center}
+  .dpad,.actions{gap:9px;justify-content:center}
+  .touch{width:56px;height:56px;flex-shrink:0}
+  .statusline{padding:4px 2px 7px;font-size:9px}
+  .progress{margin-bottom:12px}
+  .footnote{display:none}
+}
+
+/* Deluxe final: legible world map, polished handheld interface */
+.mast-actions{gap:4px}.tool{min-height:32px}.panel{max-width:min(96%,385px);max-height:94%;overflow-y:auto;overscroll-behavior:contain}.panel .smallhelp{font-size:9px;letter-spacing:.5px;opacity:.76;margin:10px 0 2px}.level-grid[hidden]{display:none}.level-grid{margin:11px auto 5px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.level-grid button{font:800 10px ui-monospace,monospace;border:2px solid #335840;background:#dceaba;color:#183e2a;padding:7px 1px;cursor:pointer}.level-grid button[disabled]{cursor:not-allowed;opacity:.38}.level-grid button.selected{background:#416d4b;color:#f7ffdd}.level-grid button .small{display:block;font-size:7px;opacity:.78;margin-top:3px}.panel h1{line-height:1.05}.panel .secondary{margin-top:8px}
+@media(max-width:410px){.masthead{gap:3px}.brand{gap:4px}.brandname{font-size:16px}.tool{font-size:8px;padding:6px 4px}.logo{height:29px;width:29px}}
+@media(orientation:landscape) and (max-height:520px){.panel{max-height:98%;padding:8px 12px}.panel h1{font-size:18px}.panel .smallhelp{display:none}.level-grid{margin:3px auto;gap:3px}.level-grid button{padding:3px 0}.level-grid button .small{display:none}.overlay{padding:4px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="masthead"><div class="brand"><div class="logo">P</div><div><div class="eyebrow">AVENTURA RETRO · EDICIÓN PIXEL ART</div><div class="brandname">PICO LAND DELUXE</div></div></div><div class="mast-actions"><button class="tool" id="mapBtn" aria-label="Ver el mapa de niveles">▦ MAPA</button><button class="tool" id="soundBtn" aria-label="Activar o silenciar sonido">♪ ON</button><button class="tool" id="pauseBtn" aria-label="Pausar juego">Ⅱ PAUSA</button></div></header>
+<div class="layout"><div><div class="frame"><div class="screen"><canvas id="game" width="320" height="288" aria-label="Juego de plataformas Pico Land"></canvas><div class="overlay" id="overlay"><div class="panel"><h1 id="overlayTitle">PICO LAND</h1><p id="overlayText">Una aventura de 8 bits en cuatro mundos: desierto, selva, islas aéreas y fortaleza. Derrota a sus guardianes y encuentra 12 reliquias.</p><button class="primary" id="mainBtn">▶ EMPEZAR PARTIDA</button><button class="secondary" id="newBtn" hidden>↻ PARTIDA NUEVA</button><div class="level-grid" id="levelPicker" hidden></div><p class="smallhelp" id="helpText">A: SALTAR · B: CORRER Y DISPARAR · CONSERVA TU PROGRESO</p><div class="tiny">4 MUNDOS · 12 FASES · 4 JEFES · 12 RELIQUIAS</div></div></div></div></div></div><div class="right"><div class="statusline"><span id="worldText">1-1 · BOSQUE</span><span>RÉCORD <b id="bestText">000000</b></span></div><div class="progress"><span id="progressValue"></span></div><div class="controls"><div class="dpad"><button id="left" class="touch" aria-label="Mover a la izquierda"><span class="big">◀</span><span class="hint">IZQ.</span></button><button id="right" class="touch" aria-label="Mover a la derecha"><span class="big">▶</span><span class="hint">DER.</span></button></div><div class="actions"><button id="b" class="touch action" aria-label="Correr o lanzar proyectil"><span class="big">B</span><span class="hint" id="bHint">CORRER</span></button><button id="a" class="touch action" aria-label="Saltar"><span class="big">A</span><span class="hint" id="aHint">SALTAR</span></button></div></div></div></div>
+<div class="footnote"><div class="privacy"><strong>CONTROLES:</strong> botones táctiles o ← → para moverte, Espacio/↑ para saltar, Z/X/Mayús para correr y disparar. Pulsa B para correr y disparar con poder. En las fases de vuelo, A eleva la nave y B dispara.</div><div>ORIGINAL · SIN INSTALACIÓN<br/>GUARDADO LOCAL · 12 FASES · 12 RELIQUIAS</div></div>
+</main>
+<script>
+(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const canvas=$('game'), ctx=canvas.getContext('2d',{alpha:false});
+ctx.imageSmoothingEnabled=false; ctx.setTransform(2,0,0,2,0,0);
+const W=160,H=144,T=8,MAX=11;
+const PALETTES=[
+ {ink:'#172f31',deep:'#37604d',mid:'#7ba478',light:'#d1e9ad',white:'#f5f9d7'},
+ {ink:'#283723',deep:'#5c7843',mid:'#9bb46b',light:'#dbe8a4',white:'#f8f9d8'},
+ {ink:'#203b35',deep:'#426b60',mid:'#82ad96',light:'#cce7d0',white:'#f2fce3'},
+ {ink:'#22382b',deep:'#496e4b',mid:'#90b183',light:'#d5eaba',white:'#f5fce0'}
+];
+const WORLDS=[
+ {name:'DESIERTO SOLEADO',short:'DESIERTO',desc:'Las dunas esconden una ciudad olvidada.',guardian:'EL CAPITÁN DE LA ARENA',tune:[392,440,523,440,349,392,330,294]},
+ {name:'SELVA ESMERALDA',short:'SELVA',desc:'El agua despierta a la vieja serpiente.',guardian:'LA SERPIENTE COLOSAL',tune:[330,392,440,330,294,330,262,294]},
+ {name:'ISLAS AÉREAS',short:'ISLAS',desc:'Entre nubes navegan guardianes mecánicos.',guardian:'LA AERONAVE CENTINELA',tune:[294,349,440,349,262,294,247,262]},
+ {name:'FORTALEZA FINAL',short:'CASTILLO',desc:'Más allá de las murallas vive el rey.',guardian:'EL REY DE LA FORTALEZA',tune:[523,494,440,392,523,587,659,523]}
+];
+const names=['OASIS DEL AMANECER','DUNAS DEL SOL','CAMPAMENTO DEL CAPITÁN','SENDERO ESMERALDA','CASCADAS ESCONDIDAS','CUEVA DE LA SERPIENTE','NUBES VIAJERAS','PUENTES FLOTANTES','CIELOS DE LA CENTINELA','MURALLAS DEL OCASO','TORRES DEL REY','SALÓN DEL ÚLTIMO GUARDIÁN'];
+let K=PALETTES[0],muted=false,ac=null,musicOn=true;
+const key={left:false,right:false,jump:false,run:false,jumpPressed:false};
+const game={mode:'menu',level:0,lives:4,score:0,coins:0,best:0,unlocked:0,frame:0,worldTimer:0,cam:0,player:null,map:null,coinsOnMap:[],pickups:[],enemies:[],bullets:[],enemyBullets:[],effects:[],boss:null,checkpoint:0,checkpointUsed:false,extra:0,relics:0,relic:null,shake:0,flash:0,previousMode:'menu'};
+try{game.best=Math.max(0,Number(localStorage.getItem('picoland_dx_best'))||0);game.unlocked=Math.min(MAX,Math.max(0,Number(localStorage.getItem('picoland_dx_unlocked'))||0));game.relics=Math.max(0,Number(localStorage.getItem('picoland_dx_relics'))||0)&4095;}catch(_){}
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const rand=n=>{const x=Math.sin(n*12.9898+78.233)*43758.5453;return x-Math.floor(x)};
+const near=(x,holes,d)=>holes.some(h=>x>=h[0]-d&&x<=h[1]+d);
+function beep(type){if(muted)return;try{
+ ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();const tones={jump:[390,610,.12,.065],coin:[770,1130,.085,.04],stomp:[220,140,.10,.06],power:[310,710,.23,.05],shoot:[650,240,.08,.035],hurt:[170,75,.23,.06],clear:[430,1050,.37,.09],start:[300,600,.22,.055],break:[150,85,.08,.04],checkpoint:[440,770,.20,.055],tick:[310,310,.04,.018],boss:[150,50,.22,.07],life:[650,960,.18,.045]};
+ const s=tones[type]||tones.coin,o=ac.createOscillator(),g=ac.createGain(),now=ac.currentTime;
+ o.type=['hurt','boss'].includes(type)?'sawtooth':'square';o.frequency.setValueAtTime(s[0],now);o.frequency.exponentialRampToValueAtTime(s[1],now+s[2]);g.gain.setValueAtTime(s[3],now);g.gain.exponentialRampToValueAtTime(.0001,now+s[2]);o.connect(g);g.connect(ac.destination);o.start(now);o.stop(now+s[2]+.015);
+ }catch(_){}
+}
+function music(){if(muted||!musicOn||game.frame%22!==0||game.mode!=='playing')return;try{
+ ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')return;
+ const s=WORLDS[Math.floor(game.level/3)].tune[(game.frame/22|0)%8];const o=ac.createOscillator(),g=ac.createGain(),now=ac.currentTime;
+ o.type='triangle';o.frequency.value=s;g.gain.setValueAtTime(.017,now);g.gain.exponentialRampToValueAtTime(.0001,now+.105);o.connect(g);g.connect(ac.destination);o.start(now);o.stop(now+.12);
+ }catch(_){}
+}
+function overlay(title,body,button){$('overlayTitle').textContent=title;$('overlayText').textContent=body;$('mainBtn').textContent=button;$('overlay').classList.remove('hidden');}
+function hideOverlay(){$('overlay').classList.add('hidden')}
+function tile(map,x,y){return !map||x<0||x>=map.width||y<0||y>=18?0:map.tiles[y*map.width+x]}
+function setTile(map,x,y,v){if(x>=0&&x<map.width&&y>=0&&y<18)map.tiles[y*map.width+x]=v}
+function solid(id){return id>=1&&id<=5}
+function makeConfig(l){
+ const world=Math.floor(l/3),stage=l%3,width=206+l*10+stage*10;
+ const holes=[];let n=0;for(let x=42+world*2;x<width-42;x+=43-stage*2-world){const gap=stage===0?2+(n%2):2+(n%3===1?2:1);holes.push([x,x+gap]);n++;}
+ const platforms=[],power=[],enemies=[],hazards=[],springs=[];
+ for(let x=19;x<width-21;x+=21+((x+stage)%3)){if(near(x,holes,4))continue;platforms.push(x);if(platforms.length%3===1&&x>30)power.push(x+1);}
+ for(let x=25;x<width-22;x+=14+stage+world){if(near(x,holes,5))continue;if(Math.abs(x-Math.floor(width*.49))<7)continue;const kind=(Math.floor(x/14)+world*2+stage)%5;enemies.push({x,kind});}
+ for(let x=60+stage*5;x<width-33;x+=47-world){if(near(x,holes,6))continue;hazards.push(x);}
+ for(let x=70;x<width-38;x+=90){if(!near(x,holes,6))springs.push(x);}
+ let checkpoint=Math.floor(width*.49);while(near(checkpoint,holes,7)&&checkpoint<width-38)checkpoint++;
+ return {world,stage,width,holes,platforms,power,enemies,hazards,springs,checkpoint,flagX:(width-9)*8};
+}
+const config=l=>makeConfig(l);
+function buildLevel(l){
+ const c=config(l),map={width:c.width,tiles:new Uint8Array(c.width*18),name:names[l],flagX:c.flagX,world:c.world,checkpoint:c.checkpoint*8,flight:(l===5||l===11)},coins=[],pickups=[],enemies=[];
+ for(let x=0;x<c.width;x++){
+  if(near(x,c.holes,0))continue;
+  for(let y=16;y<18;y++)setTile(map,x,y,1);
+ }
+ // A sheltered start, a clear landing zone, and a safe arena for each guardian.
+ for(let x=0;x<12;x++)for(let y=16;y<18;y++)setTile(map,x,y,1);
+ for(let x=c.width-38;x<c.width;x++)for(let y=16;y<18;y++)setTile(map,x,y,1);
+ for(const x of c.platforms){
+  const y=12-(x%3===0?1:0);
+  for(let j=0;j<5;j++)setTile(map,x+j,y,2);
+  if(x%3===1)setTile(map,x+2,y-2,4);
+  // Discoverable breakable relics above selected platforms in later stages.
+  if(c.stage>0&&x%5===2&&x>29)setTile(map,x+3,y-2,3);
+  for(let j=0;j<5;j++)coins.push({x:(x+j)*8+3,y:(y-3)*8+1,got:false,phase:j+x});
+ }
+ for(let x=14;x<c.width-12;x+=9){if(near(x,c.holes,1))continue;coins.push({x:x*8+2,y:103-6*(x%3),got:false,phase:x});}
+ for(const x of c.hazards){if(x>c.checkpoint-4&&x<c.checkpoint+7)continue;setTile(map,x,15,6);if(c.stage>0)setTile(map,x+1,15,6);}
+ for(const x of c.springs)setTile(map,x,15,7);
+ for(const x of c.power)pickups.push({x:x*8,y:110,type:((x/20|0)%3===0?'shield':'power'),got:false});
+ for(const item of c.enemies){if(item.x>c.width-43&&c.stage===2)continue;
+  const kind=item.kind,flight=kind===2||kind===4;
+  enemies.push({x:item.x*8,y:flight?(kind===4?84:98):120,baseY:flight?(kind===4?84:98):120,w:8,h:8,vx:(item.x%2?-.38:.43)*(1+c.world*.16),vy:0,phase:item.x*.19,kind,hp:kind===3?2:1,dead:false,timer:0});
+ }
+ if(enemies.length<8)enemies.push({x:(c.width-46)*8,y:120,baseY:120,w:8,h:8,vx:-.38,vy:0,phase:0,kind:0,hp:1,dead:false,timer:0});
+ const boss=c.stage===2?{x:(c.width-24)*8,y:112,w:17,h:16,vx:-.45,vy:0,hp:3+c.world,maxhp:3+c.world,invul:0,dead:false,attack:0,phase:0,world:c.world}:null;
+ return {map,coins,pickups,enemies,boss,config:c};
+}
+function makePlayer(x,power=false,shield=false){return {x,y:power?112:116,w:7,h:power?16:12,vx:0,vy:0,ground:false,buffer:0,coyote:0,hold:0,face:1,power,shield,invul:95,shoot:0,spring:0,steps:0}}
+function loadLevel(l,preserve=false){
+ if(l<0||l>MAX)return;
+ const old=game.player,d=buildLevel(l);game.level=l;game.map=d.map;game.coinsOnMap=d.coins;game.pickups=d.pickups;game.enemies=d.enemies;game.boss=d.boss;game.cam=0;game.bullets=[];game.enemyBullets=[];game.effects=[];game.worldTimer=0;game.checkpoint=0;game.checkpointUsed=false;const perch=d.config.platforms[Math.floor(d.config.platforms.length*.67)]||30;const py=12-(perch%3===0?1:0);game.relic={x:(perch+2)*8,y:py*8-11,got:!!(game.relics&(1<<l)),phase:l};game.player=makePlayer(16,preserve&&old?.power,preserve&&old?.shield);if(game.map.flight){Object.assign(game.player,{x:16,y:68,w:13,h:8,ship:true,power:true,invul:125})}K=PALETTES[d.config.world];
+ $('worldText').textContent=`${Math.floor(l/3)+1}-${l%3+1} · ${d.map.name}${game.map.flight?' · VUELO':l===6?' · CORRIENTE':(l===9||l===10)?' · VIENTO':''}`;$('progressValue').style.width='0%';$('aHint').textContent=game.map.flight?'SUBIR':'SALTAR';$('bHint').textContent=game.map.flight?'FUEGO':'CORRER';updateHud();
+}
+function save(){try{localStorage.setItem('picoland_dx_best',String(game.best));localStorage.setItem('picoland_dx_unlocked',String(game.unlocked));localStorage.setItem('picoland_dx_relics',String(game.relics))}catch(_){}}
+function updateHud(){if(game.score>game.best){game.best=game.score;save()}$('bestText').textContent=String(game.best).padStart(6,'0')}
+function score(n){game.score+=n;updateHud()}
+function newGame(from=0){$('levelPicker').hidden=true;game.lives=4;game.score=0;game.coins=0;game.extra=0;game.frame=0;loadLevel(from);game.mode='playing';$('newBtn').hidden=true;hideOverlay();beep('start')}
+function collision(x,y,w,h){let out=[];const l=Math.floor(x/8),r=Math.floor((x+w-.01)/8),top=Math.floor(y/8),bottom=Math.floor((y+h-.01)/8);
+ for(let j=top;j<=bottom;j++)for(let i=l;i<=r;i++){const id=tile(game.map,i,j);if(solid(id))out.push({x:i,y:j,id});}
+ return out;
+}
+const overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+function effect(x,y,type){if(game.effects.length>90)return;for(let i=0;i<3;i++)game.effects.push({x,y,type,life:20+i*5,vx:(rand(i+game.frame)-.5)*1.6,vy:-1-rand(i*3+game.frame)})}
+function onHeadHit(t){if(t.id===4){setTile(game.map,t.x,t.y,5);gainCoin(t.x*8+3,t.y*8-4);beep('coin');}
+ else if(t.id===3&&game.player.power){setTile(game.map,t.x,t.y,0);score(40);effect(t.x*8,t.y*8,'break');beep('break');}}
+function collideMove(p){
+ // Resolve every contact along the same axis with the ORIGINAL velocity.
+ // Mutating velocity inside a tile loop makes later floor tiles look like
+ // ceiling collisions, pushing the hero through the ground.
+ const vx=p.vx;
+ p.x+=vx;
+ const walls=collision(p.x,p.y,p.w,p.h);
+ if(walls.length&&vx!==0){
+  if(vx>0)p.x=Math.min(p.x,...walls.map(t=>t.x*T-p.w));
+  else p.x=Math.max(p.x,...walls.map(t=>(t.x+1)*T));
+  p.vx=0;
+ }
+ const vy=p.vy;
+ p.y+=vy;p.ground=false;
+ const floors=collision(p.x,p.y,p.w,p.h);
+ if(floors.length&&vy!==0){
+  if(vy>0){p.y=Math.min(p.y,...floors.map(t=>t.y*T-p.h));p.ground=true;}
+  else{
+   const ceiling=Math.max(...floors.map(t=>(t.y+1)*T));
+   p.y=Math.max(p.y,ceiling);
+   if(p===game.player)for(const t of floors.filter(t=>(t.y+1)*T===ceiling))onHeadHit(t);
+  }
+  p.vy=0;
+ }
+}
+function death(force=false){
+ const p=game.player;if(!p||game.mode!=='playing'||(!force&&p.invul>0))return;
+ if(!force&&(p.shield||(p.power&&!p.ship))){
+  if(p.shield)p.shield=false;else{p.power=false;p.h=12;p.y+=4;}
+  p.invul=100;effect(p.x,p.y,'hurt');beep('hurt');return;
+ }
+ game.lives--;game.shake=8;beep('hurt');effect(p.x,p.y,'hurt');
+ if(game.lives<=0){game.mode='over';overlay('FIN DE PARTIDA',`Has obtenido ${game.score} puntos y ${game.coins} luceros. Tu mayor fase alcanzada es ${Math.floor(game.unlocked/3)+1}-${game.unlocked%3+1}.`,'↻ VOLVER A JUGAR');return;}
+ const checkpoint=game.checkpointUsed?game.checkpoint:16;
+ game.player=makePlayer(checkpoint,false,false);if(game.map.flight)Object.assign(game.player,{y:68,w:13,h:8,ship:true,power:true});game.player.invul=115;
+ game.cam=clamp(checkpoint-60,0,game.map.width*8-W);game.bullets=[];game.enemyBullets=[];game.shake=6;
+}
+function gainCoin(x,y){game.coins++;score(100);effect(x,y,'coin');if(game.coins%40===0){game.lives++;beep('life')}else beep('coin')}
+function clearLevel(){
+ if(game.mode!=='playing')return;
+ game.mode='transition';game.flash=18;beep('clear');score(Math.max(0,Math.floor(360-game.worldTimer/60))*8);
+ const next=Math.min(MAX,game.level+1);game.unlocked=Math.max(game.unlocked,next);save();
+ if(game.level===MAX){game.mode='won';score(game.lives*800);overlay('¡PICO LAND A SALVO!',`Has completado las 12 fases y derrotado a los cuatro guardianes. Puntos: ${game.score}. Luceros: ${game.coins}. Reliquias: ${game.relics.toString(2).replace(/0/g,'').length}/12. ¡Una aventura legendaria!`,'★ OTRA AVENTURA');}
+ else if(game.level%3===2)overlay('¡MUNDO LIBERADO!',`Has vencido a ${WORLDS[Math.floor(game.level/3)].guardian}. Próximo mundo: ${WORLDS[Math.floor(next/3)].name}.`,'▶ CONTINUAR');
+ else overlay('¡FASE SUPERADA!',`Has completado ${names[game.level]}. Tu siguiente desafío es ${names[next]}.`,'▶ SIGUIENTE FASE');
+}
+function bossHit(){const b=game.boss;if(!b||b.dead||b.invul>0)return;b.hp--;b.invul=48;effect(b.x+5,b.y,'boss');score(300);beep('stomp');if(b.hp<=0){b.dead=true;game.flash=20;score(2000+game.level*100);game.enemyBullets=[];beep('clear')}}
+function update(){
+ if(game.mode!=='playing')return;
+ game.frame++;game.worldTimer++;game.shake=Math.max(0,game.shake-1);game.flash=Math.max(0,game.flash-1);music();
+ const p=game.player,dir=Number(key.right)-Number(key.left);p.steps++;const max=key.run?2.12:1.35;
+ if(p.ship){
+   // At the guardian arena the scrolling STOPS: the aircraft cannot fly
+   // past a living boss and make the level mathematically unwinnable.
+   const guardian=game.boss&&!game.boss.dead?game.boss:null;
+   const cameraEdge=guardian?Math.max(0,guardian.x-W+100):game.map.width*8-W;
+   game.cam=clamp(Math.min(game.cam+1.05,cameraEdge),0,game.map.width*8-W);
+   p.vx=clamp(p.vx+dir*.23,-1.9,1.9)*(!dir?.88:1);
+   const maxFlightX=guardian?Math.min(game.cam+W-19,guardian.x-26):game.cam+W-19;
+   p.x=clamp(p.x+Math.max(.45,p.vx+1),game.cam+6,Math.max(game.cam+6,maxFlightX));
+   p.vy=clamp((p.vy+(key.jump?-.29:.18))*.90,-1.85,1.7);
+   p.y=clamp(p.y+p.vy,19,112);
+   if(p.y>=112&&game.frame%8===0){effect(p.x,p.y,'spark');}
+ }else{
+   p.vx=clamp((p.vx+dir*.23)*(!dir?.73:1),-max,max);if(dir)p.face=dir;
+   if(key.jumpPressed){p.buffer=8;key.jumpPressed=false;}else p.buffer=Math.max(0,p.buffer-1);
+   p.coyote=p.ground?7:Math.max(0,p.coyote-1);
+   if(p.buffer>0&&p.coyote>0){effect(p.x,p.y+p.h,'spark');p.vy=-4.35;p.hold=0;p.coyote=0;p.buffer=0;beep('jump')}
+   if(p.vy<0&&key.jump&&p.hold<15){p.vy-=.05;p.hold++;}
+   if(!key.jump&&p.vy< -1.85)p.vy=-1.85;
+   // World-specific movement: buoyancy in the crystal river and light gusts
+   // on the aerial causeways, retaining the same collision hitboxes.
+   if((game.level===9||game.level===10)&&!p.ground)
+     p.vx=clamp(p.vx+Math.sin(game.frame*.048)*.045,-max,max);
+   p.vy=Math.min(4.4,p.vy+(game.level===6?.235:.29));collideMove(p);
+   p.x=clamp(p.x,0,game.map.width*8-p.w);
+   if(p.y>H+18){death(true);return;}
+   p.spring=Math.max(0,p.spring-1);
+   const l=Math.floor(p.x/8),r=Math.floor((p.x+p.w-.01)/8);
+   for(let x=l;x<=r;x++){
+    if(tile(game.map,x,15)===6&&p.y+p.h>=120&&p.y<128&&p.invul===0){death(false);if(game.player!==p)return;}
+    if(tile(game.map,x,15)===7&&p.spring===0&&p.vy>=0&&p.y+p.h>=120&&p.y+p.h<=128){p.y=120-p.h;p.vy=-5.8;p.spring=13;p.ground=false;effect(x*8,115,'spring');beep('jump')}
+   }
+ }
+ p.invul=Math.max(0,p.invul-1);p.shoot=Math.max(0,p.shoot-1);
+ if(key.run&&(p.power||p.ship)&&p.shoot===0&&game.bullets.length<4){game.bullets.push({x:p.x+(p.ship?13:(p.face===1?8:-3)),y:p.y+4,w:4,h:4,vx:p.ship?3.8:p.face*3.25,vy:p.ship?0:-.55,ttl:77,bounces:0});p.shoot=p.ship?11:18;beep('shoot')}
+ for(const e of game.enemies){if(e.dead){e.timer--;continue;}
+  if(e.kind===2||e.kind===4){e.x+=e.vx;e.y=e.baseY+Math.sin(game.frame*.065+e.phase)*(e.kind===4?15:10);
+    if(e.x<e.phase*0+12||e.x>game.map.width*8-18)e.vx*=-1;
+    if(e.kind===4&&game.frame%118===0&&Math.abs(e.x-p.x)<120){game.enemyBullets.push({x:e.x,y:e.y+5,w:3,h:3,vx:p.x>e.x?1.08:-1.08,vy:0,ttl:145})}
+  }else{
+   if(e.kind===1){e.vy+=.22;e.y+=e.vy;if(e.y>=120){e.y=120;e.vy=game.frame%65<3?-3.2:0}}
+   e.x+=e.vx;
+   const face=Math.floor((e.x+(e.vx>0?e.w+2:-2))/8),foot=Math.floor((e.y+e.h+2)/8);
+   if(collision(e.x,e.y,e.w,e.h).length||!solid(tile(game.map,face,foot))){e.vx*=-1;e.x+=e.vx*2}
+  }
+  if(overlap(p,e)&&p.invul===0){if(!p.ship&&p.vy>0&&p.y+p.h-e.y<=7&&e.kind!==4){p.vy=-2.95;if(--e.hp<=0){e.dead=true;e.timer=24;score(200+e.kind*100);effect(e.x,e.y,'stomp');beep('stomp')}else beep('break')}
+   else{death(false);if(game.player!==p)return;}}
+ }
+ for(const b of game.bullets){b.x+=b.vx;b.vy=Math.min(2,b.vy+.1);b.y+=b.vy;b.ttl--;
+  if(collision(b.x,b.y,b.w,b.h).length){if(b.vy>0&&b.bounces<1){b.vy=-1.7;b.bounces++;}else b.ttl=0;}
+  for(const e of game.enemies){if(e.dead||!overlap(b,e))continue;b.ttl=0;if(--e.hp<=0){e.dead=true;e.timer=20;score(200+e.kind*75);effect(e.x,e.y,'stomp')}beep('stomp');break;}
+  if(game.boss&&!game.boss.dead&&overlap(b,game.boss)){b.ttl=0;bossHit()}
+ }
+ game.bullets=game.bullets.filter(b=>b.ttl>0&&b.x>game.cam-20&&b.x<game.cam+W+30&&b.y>=0&&b.y<144);
+ for(const b of game.enemyBullets){b.x+=b.vx;b.y+=b.vy;b.ttl--;if(overlap(b,p)&&p.invul===0){b.ttl=0;death(false);if(game.player!==p)return;}if(collision(b.x,b.y,b.w,b.h).length)b.ttl=0;}
+ game.enemyBullets=game.enemyBullets.filter(b=>b.ttl>0&&b.x>game.cam-10&&b.x<game.cam+W+20);
+ for(const c of game.coinsOnMap){if(!c.got&&overlap(p,{x:c.x-1,y:c.y-1,w:7,h:7})){c.got=true;gainCoin(c.x,c.y)}}
+ if(game.relic&&!game.relic.got&&overlap(p,{x:game.relic.x-3,y:game.relic.y-5,w:13,h:14})){game.relic.got=true;game.relics|=(1<<game.level);save();score(1500);game.flash=14;beep('life');effect(p.x,p.y,'power')}
+ for(const o of game.pickups){if(!o.got&&overlap(p,{x:o.x,y:o.y,w:8,h:10})){o.got=true;
+  if(o.type==='shield')p.shield=true;else if(!p.power){p.y-=4;p.power=true;p.h=16}
+  score(500);effect(o.x,o.y,'power');beep('power');}}
+ const boss=game.boss;
+ if(boss&&!boss.dead&&Math.abs(p.x-boss.x)<230){boss.invul=Math.max(0,boss.invul-1);boss.phase++;
+  const delta=p.x-boss.x;boss.vx=delta<0?-(.45+boss.world*.06):(.45+boss.world*.06);boss.x=clamp(boss.x+boss.vx,(game.map.width-40)*8,(game.map.width-12)*8);
+  boss.y=112-((boss.world===2||boss.world===3)?Math.round(Math.abs(Math.sin(boss.phase*.035))*14):0);
+  if(boss.phase%(124-boss.world*11)===0){
+   // Guardian-specific projectile rhythms, telegraphed by the floating crystal.
+   const toward=delta<0?-1:1;
+   if(boss.world===0){game.enemyBullets.push({x:boss.x+9,y:boss.y+5,w:4,h:4,vx:toward*1.15,vy:-.3,ttl:130});}
+   else if(boss.world===1){for(const h of [-.8,.1])game.enemyBullets.push({x:boss.x+9,y:boss.y+6,w:4,h:4,vx:toward*1.35,vy:h,ttl:105});}
+   else if(boss.world===2){for(const h of [-.55,0,.55])game.enemyBullets.push({x:boss.x+9,y:boss.y+6,w:4,h:4,vx:toward*1.55,vy:h,ttl:102});}
+   else{for(const h of [-.65,.6])game.enemyBullets.push({x:boss.x+9,y:boss.y+6,w:4,h:4,vx:toward*1.85,vy:h,ttl:96});}
+   game.flash=3;beep('boss')
+  }
+  if(overlap(p,boss)&&p.invul===0){if(!p.ship&&p.vy>0&&p.y+p.h-boss.y<11){p.vy=-3.55;bossHit()}else{death(false);if(game.player!==p)return;}}
+ }
+ if(!game.checkpointUsed&&p.x>game.map.checkpoint){game.checkpointUsed=true;game.checkpoint=(game.map.checkpoint-16);beep('checkpoint');effect(p.x,110,'coin')}
+ for(const e of game.effects){e.x+=e.vx;e.y+=e.vy;e.vy+=.07;e.life--}
+ game.effects=game.effects.filter(e=>e.life>0);
+ if(!p.ship&&p.ground&&Math.abs(p.vx)>1.6&&game.frame%11===0)effect(p.x,p.y+p.h-1,'spark');
+ if(!p.ship)game.cam+=clamp(clamp(p.x-53,0,game.map.width*T-W)-game.cam,-4.8,4.8)*.28;
+ $('progressValue').style.width=`${clamp(p.x/game.map.flagX*100,0,100)}%`;
+ if(p.x>game.map.flagX&&(!boss||boss.dead))clearLevel();
+ if(game.worldTimer>360*60){death(true);game.worldTimer=0;}
+}
+function px(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h))}
+// Hand-pixelled parallax scenery, original to PicoLand Deluxe.
+function cloud(x,y,s=1){px(x+4*s,y,13*s,3*s,K.white);px(x,y+3*s,25*s,4*s,K.white);px(x+8*s,y-3*s,9*s,3*s,K.white);px(x+3*s,y+7*s,18*s,2*s,K.mid)}
+function mountain(x,y,h,col){for(let j=0;j<h;j+=2){const ww=Math.max(2,((j/h)*34)|0);px(x-ww/2,y-h+j,ww,3,col)}px(x-5,y-h+6,9,2,K.light)}
+function fir(x,y,h,front=false){const col=front?K.deep:K.mid;px(x-2,y-h*.48,4,h*.49,K.deep);for(let a=0;a<3;a++){let bw=8+a*5;px(x-bw/2,y-h+8+a*7,bw,7,col);px(x-bw/2+2,y-h+9+a*7,3,2,front?K.mid:K.light)}px(x-1,y-h+3,2,6,front?K.mid:K.white)}
+function palm(x,y){px(x,y-27,3,28,K.deep);px(x+1,y-26,2,3,K.mid);for(let a=-3;a<=3;a++){let ex=x+2+a*5;let ey=y-30+Math.abs(a)*3;px(Math.min(x,ex),ey,Math.abs(x-ex)+2,2,K.deep);px(ex-2,ey,6,3,K.mid)}px(x-6,y-30,17,3,K.deep);px(x-1,y-34,5,4,K.mid)}
+function pyramid(x,y,w,h){for(let j=0;j<h;j+=3){const ww=Math.max(2,((j/h)*w)|0);px(x-ww/2,y-h+j,ww,3,K.mid);if(j%9===0){px(x-ww/2+2,y-h+j,Math.min(8,ww-3),1,K.light)}}px(x-2,y-h+8,5,2,K.white)}
+function cactus(x,y){px(x,y-20,4,22,K.deep);px(x-5,y-15,5,3,K.deep);px(x-5,y-19,3,4,K.deep);px(x+4,y-11,5,3,K.deep);px(x+6,y-17,3,6,K.deep);px(x+1,y-18,1,3,K.mid)}
+function crystal(x,y,h){const t=Math.max(8,h);px(x,y-t+5,8,t-5,K.deep);px(x+1,y-t+5,5,t-7,K.mid);px(x+3,y-t+5,2,t-8,K.white);px(x+2,y-t,4,6,K.mid);px(x+3,y-t-3,2,4,K.white);px(x+7,y-t+12,3,9,K.deep)}
+function tower(x,y,h){px(x,y-h,15,h,K.deep);for(let a=0;a<h/9;a++){px(x+1,y-h+5+a*9,13,1,K.mid);px(x+3+(a%2)*6,y-h+6+a*9,1,4,K.ink)}for(let t=0;t<4;t++)px(x-3+t*6,y-h-5,5,6,K.deep);px(x+5,y-h+13,5,12,K.ink);px(x+6,y-h+14,3,10,K.mid)}
+function background(){
+ const cam=game.cam,world=Math.floor(game.level/3);
+ px(0,0,W,H,K.light);
+ if(world===0){
+  px(117-Math.floor(cam*.06)%189,30,19,19,K.white);px(120-Math.floor(cam*.06)%189,26,13,3,K.white);
+  for(let i=-1;i<8;i++){const x=i*57-Math.floor(cam*.16)%57;pyramid(x+19,109,50+(i%3)*5,32+(i%3)*5)}
+  for(let i=-1;i<10;i++){const x=i*50-Math.floor(cam*.28)%50;px(x,107,53,24,K.mid);px(x+9,103,25,4,K.mid);px(x+14,100,13,3,K.mid)}
+  for(let i=-1;i<9;i++){const x=i*39-Math.floor(cam*.53)%39; if(i%3!==0)palm(x+11,127);else cactus(x+13,125)}
+  for(let i=0;i<12;i++){let x=(i*29-Math.floor(cam*.37)%390+390)%390;px(x,117+i%3*2,4,1,K.white)}
+ }else if(world===1){
+  // Huge crowns above the horizon, layered woodland and a distant chapel.
+  for(let i=-1;i<9;i++){const x=i*52-Math.floor(cam*.10)%52;cloud(x,30+(i%3)*7,1)}
+  for(let i=-1;i<11;i++){let x=i*37-Math.floor(cam*.17)%37;mountain(x+12,111,36+(i%3)*7,K.mid)}
+  for(let i=-1;i<10;i++){const x=i*29-Math.floor(cam*.27)%29;fir(x+10,124,47+(i%3)*8)}
+  for(let i=-1;i<11;i++){const x=i*37-Math.floor(cam*.49)%37;fir(x+15,129,36+(i%4)*5,true)}
+  for(let i=0;i<16;i++){let x=(i*27-Math.floor(cam*.32)%480+480)%480;if(x<160){px(x+3,93+(i%3)*6,2,3,K.white);px(x,96+(i%3)*6,8,2,K.deep)}}
+ }else if(world===2){
+  // Faraway clouds, airborne islands and animated aeronautic silhouettes.
+  for(let i=-1;i<8;i++){const x=i*55-Math.floor(cam*.08)%55;cloud(x,25+i%3*12,1)}
+  for(let i=-1;i<9;i++){const x=i*43-Math.floor(cam*.17)%43;mountain(x+15,132,20+i%4*5,K.mid)}
+  for(let i=-1;i<8;i++){const x=i*39-Math.floor(cam*.31)%39;cloud(x,90+i%3*11,.65)}
+  for(let i=-1;i<8;i++){const x=i*43-Math.floor(cam*.45)%43;px(x,112+i%3*3,27,5,K.deep);px(x+5,117+i%3*3,18,4,K.mid);px(x+8,121+i%3*3,8,2,K.ink);px(x+3,111+i%3*3,2,1,K.white)}
+  for(let i=0;i<5;i++){let x=(i*91+29-Math.floor(cam*.24)%425+425)%425,y=31+(i%3)*19;if(x<174){px(x,y,25,5,K.deep);px(x+4,y-3,16,3,K.mid);px(x+1,y+5,23,2,K.ink);px(x+6,y+7,3,3,K.deep);px(x+17,y+7,3,3,K.deep);px(x+8,y+1,2,2,K.white)}}
+ }else{
+  for(let i=-1;i<8;i++){const x=i*47-Math.floor(cam*.10)%47;cloud(x,33+(i%2)*10)}
+  for(let i=-1;i<8;i++){const x=i*48-Math.floor(cam*.19)%48;mountain(x+18,119,37+(i%3)*9,K.mid)}
+  for(let i=-1;i<10;i++){const x=i*38-Math.floor(cam*.36)%38;tower(x,130,31+(i%4)*7)}
+  for(let i=-1;i<10;i++){const x=i*34-Math.floor(cam*.53)%34;px(x,120,27,10,K.deep);for(let j=0;j<5;j++)px(x+j*6,116,4,4,K.deep);px(x+9,124,3,3,K.mid)}
+  for(let i=0;i<12;i++){const x=(i*37-Math.floor(cam*.26)%450+450)%450,y=29+(i*19)%53;if(x<160){px(x,y,2,2,K.white);px(x-2,y+1,6,1,K.mid)}}
+ }
+ // Subterranean current: rising bubble columns and rippling cave roof.
+ if(game.level===6)for(let i=0;i<12;i++){
+   const x=(i*19+Math.floor(cam*.11))%165,y=120-((game.frame*.4+i*23)%95);
+   px(x,y,3,3,K.white);px(x+1,y+1,1,1,K.mid);
+ }
+ // Wind on mountain bridges: drifting leaves show the gust direction.
+ if(game.level===9||game.level===10)for(let i=0;i<9;i++){
+   const x=((i*29-game.frame*.65)%190+190)%190,y=22+(i*13)%83;
+   px(x,y,5,1,K.mid);px(x+3,y+1,2,1,K.deep);
+ }
+}
+function drawTile(id,x,y,tx,ty){
+ const n=rand(tx*13+ty*71),world=Math.floor(game.level/3);
+ switch(id){
+ case 1:{
+  px(x,y,8,8,K.deep);px(x,y,8,1,K.ink);
+  if(ty===16){px(x,y,8,2,K.mid);px(x+1,y+2,3,1,K.white);if(world===0){px(x+2,y-2,2,2,K.mid);px(x+6,y-1,1,2,K.mid)}else if(world===1)px(x+5,y+1,2,1,K.light);else if(world===2)px(x+4,y+1,2,2,K.white);else px(x+2,y,2,1,K.white)}
+  if(world===0){px(x+1,y+5,3,1,K.ink);px(x+5,y+3,2,2,K.mid)}
+  else if(world===1){px(x+1,y+4,6,1,K.mid);px(x+3,y+5,1,2,K.ink)}
+  else if(world===2){px(x+2,y+2,3,3,K.mid);px(x+3,y+1,1,5,K.white)}
+  else {px(x,y+5,8,1,K.ink);px(x+3+(tx%2)*3,y+1,1,4,K.mid)}
+  if(n>.60)px(x+5,y+6,2,1,K.ink);break;}
+ case 2: // Verdant stone ledges, grouted edges and foliage.
+  px(x,y,8,6,K.ink);px(x,y,8,2,K.mid);px(x+1,y+2,6,2,K.deep);px(x+1,y+4,6,1,K.light);px(x+3,y+5,2,1,K.mid);
+  if(world===0)px(x+1,y-2,2,3,K.mid);if(world===2)px(x+4,y-2,2,2,K.white);break;
+ case 3: px(x,y,8,8,K.ink);px(x+1,y+1,6,6,K.mid);px(x+1,y+1,2,2,K.white);px(x+5,y+5,2,2,K.deep);px(x+3,y+2,2,1,K.deep);break;
+ case 4: px(x,y,8,8,K.ink);px(x+1,y+1,6,6,K.mid);px(x+2,y+2,4,4,K.light);px(x+3,y+2,2,1,K.ink);px(x+4,y+3,1,2,K.ink);px(x+3,y+5,2,1,K.ink);px(x+4,y+6,1,1,K.white);break;
+ case 5: px(x,y,8,8,K.deep);px(x+1,y+1,6,6,K.mid);px(x+2,y+2,4,4,K.deep);px(x+2,y+2,4,1,K.white);break;
+ case 6: px(x,y+6,8,2,K.ink);px(x+1,y+4,2,2,K.deep);px(x+3,y,2,6,K.ink);px(x+5,y+3,2,3,K.deep);px(x+3,y+1,1,2,K.white);break;
+ case 7: px(x,y+7,8,1,K.ink);px(x+1,y+5,6,2,K.deep);px(x+2,y+3,4,2,K.mid);px(x+3,y+1,2,2,K.white);break;
+ }
+}
+
+// PicoLand Deluxe pixel-art edition. All patterns and character designs are original.
+// Each matrix cell corresponds to exactly one logical Game Boy pixel.
+const SPR={
+ heroIdle:[
+'......kkkk........',
+'....kkddddkk......',
+'...kddmmddddkk....',
+'...kdwwmddkkkk....',
+'..kkdddddkkkkkk...',
+'..klllldddllllk...',
+'..kllwwddllwwlk...',
+'..kllklllldklllk...',
+'...kllllddllllk...',
+'....kddddddddk....',
+'...kwwdddmmmkk....',
+'..kllmmddmmmddk...',
+'.klllmdddddddmmk..',
+'.kkmdmmmmdddmmkk..',
+'..kmmddddddmmk....',
+'...kddkkkkddk.....',
+'...kddk..kddk.....',
+'..kdddk..kdddk....',
+'.kkddddk.kkddddk..',
+'.kkkkkkk.kkkkkkk..'],
+ heroWalkA:[
+'......kkkk........',
+'....kkddddkk......',
+'...kddmmddddkk....',
+'...kdwwmddkkkk....',
+'..kkdddddkkkkkk...',
+'..klllldddllllk...',
+'..kllwwddllwwlk...',
+'..kllklllldklllk...',
+'...kllllddllllk...',
+'....kddddddddk....',
+'..kkwwdddmmmkk....',
+'.klllmddddmmmdk...',
+'.klllmdddddddmmk..',
+'..kmdmmmmdddmmkk..',
+'...kmmddddddmmk...',
+'....kddkkkkddk....',
+'...kddk...kddk....',
+'..kddk.....kdddk..',
+'.kkddk.......kdddkk',
+'.kkkk.........kkkkk'],
+ heroWalkB:[
+'......kkkk........',
+'....kkddddkk......',
+'...kddmmddddkk....',
+'...kdwwmddkkkk....',
+'..kkdddddkkkkkk...',
+'..klllldddllllk...',
+'..kllwwddllwwlk...',
+'..kllklllldklllk...',
+'...kllllddllllk...',
+'....kddddddddk....',
+'...kwwdddmmmkk....',
+'..kllmmddmmmddkk..',
+'.klllmdddddddmmmk.',
+'.kkmdmmmmdddmmkkk.',
+'..kmmddddddmmk....',
+'...kddkkkkddk.....',
+'...kdddkkkkddk....',
+'...kddddk.kddddk..',
+'..kdddk....kddddkk',
+'.kkkkk......kkkkkk'],
+ heroJump:[
+'......kkkk........',
+'....kkddddkk......',
+'...kddmmddddkk....',
+'...kdwwmddkkkk....',
+'..kkdddddkkkkkk...',
+'..klllldddllllk...',
+'..kllwwddllwwlk...',
+'..kllklllldklllk...',
+'...kllllddllllk...',
+'....kddddddddk....',
+'.kkkwwdddmmmkkk...',
+'klllmddddmmmdllk..',
+'klllmdddddddmmllk.',
+'.kkmdmmmmdddmmkk..',
+'...kmmddddddmmk...',
+'...kkddkkkkddkk...',
+'..kdddk....kdddk..',
+'.kdddk......kdddk.',
+'.kddk........kddk.',
+'.kkkk........kkkk.'],
+ heroFall:[
+'......kkkk........',
+'....kkddddkk......',
+'...kddmmddddkk....',
+'...kdwwmddkkkk....',
+'..kkdddddkkkkkk...',
+'..klllldddllllk...',
+'..kllwwddllwwlk...',
+'..kllklllldklllk...',
+'...kllllddllllk...',
+'....kddddddddk....',
+'...kwwdddmmmkk....',
+'..kllmmddmmmddk...',
+'.klllmdddddddmmk..',
+'.kkmdmmmmdddmmkk..',
+'..kmmddddddmmk....',
+'...kddkkkkddk.....',
+'.kkdddk..kdddkk...',
+'.kddddk..kddddk...',
+'.kdddk....kdddk...',
+'.kkkk......kkkk...'],
+ slime:[
+'.....kk.....','...kkddkk...','..kddmmddk..','.kdmmmmdddk.','kdmmwwmmwwdk','kdmmkkmmkkdk','kdmmmmmmmmmk','kddmmmmmmddk','.kddddddddk.','..kkkddkkk..','..kdk..kdk..','..kkk..kkk..'],
+ beetle:[
+'....kkkk....','..kkddddkk..','.kdmmmmmmmk.','kddmddddmddk','kddwwddwwddk','kddkkddkkddk','kkdmmmmmmddk','.kddmmmmddk.','kkkddkkddkkk','kdkdk..kdkdk','kk.kk..kk.kk'],
+ wisp:[
+'k..kk..kk..k','dk.kddk.k.dd','mdkddddkddmm','.kddmmdddk..','..kdwwddk...','..kdkkddk...','.kddmmdddk..','k.kddmmddk.k','dk..kkkk..kd','kk...dd...kk'],
+ spiker:[
+'..k..k..k...','..dk.dk.dk...','.kddkkddkk..','kddmmmmmmddk','kddmwwmmwwdk','kddmkkmmkkdk','kddmmmmmmddk','.kddddddddk.','kddkddddkddk','kdk.kddk.kdk','kk..kkkk..kk'],
+ bat:[
+'kk........kk','kddk....kddk','kdmmkkkkmmdk','.kdmmmddmmmk','..kddwwddk..','..kddkkddk..','..kdddmmddk..','.kddkkkkddk.','kddk....kddk','kk........kk'],
+ ship:[
+'..........kkkk.......',
+'........kkddddkk.....',
+'......kkddmmmmddkk...',
+'.....kddddwwddddddk..',
+'..kkkkkkkkkkkkkkkkkk.',
+'kkdddddddddddddddddk.',
+'kddmwwmdmmmddmwwmddk',
+'kkddddddddddddddddkk.',
+'..kkkkdddmmmmdddkk...',
+'....kkkddddddddkkk....',
+'.......kkkkkkkk.......',
+'.........kkkk.........'],
+ bossTree:[
+'......kk...kk...kk.......',
+'.....kddk.kddk.kddk......',
+'...kkdmmkkdmmkkdmmkk.....',
+'..kddmmmddmmmddmmmdk....',
+'..kdmmmmmddmmmmmmmmdk...',
+'.kddmkdddmmdddmmmmdddk..',
+'.kdddkmmmmmdddkmmmdddk..',
+'kdddddkkddddddkkddddddk.',
+'kddmmmmmmmmmmmmmmmmmmddk',
+'.kddddmwwmmmmwwmddddddk.',
+'..kdddmkkmmmmkkmmmdddk..',
+'..kdddmddmmmmddmmmmddk..',
+'..kddddmmmmmmmmmmdddk...',
+'..kddkkkkkddkkkkkddk....',
+'..kddkdmddddddmdkddk....',
+'.kddkdmddddddddmdkddk...',
+'kdddkkdddmkkmdddkkdddk..',
+'kdddk.kddmmmmddk.kdddk..',
+'.kkk...kddddddk...kkk...',
+'.....kkkddmmddkkk.......',
+'....kddmddmmddmddk......',
+'....kddkkkkkkkkddk......',
+'...kkdddkk..kkdddk......',
+'..kdddddk....kdddddk....',
+'.kkkkkkkk....kkkkkkkk...'],
+ bossScarab:[
+'.........kkkkkk.........',
+'........kddmmddk........',
+'...kk...kdmmmmddk...kk...',
+'..kddk..kddmmdddk..kddk..',
+'..kmmddkkkddddkkkddmmk..',
+'.kddmmddmmmmmmmmddmmddk.',
+'kddddmmmmmmmmmmmmmmdddddk',
+'kddmmmmddddddddmmmmmmdddk',
+'kddmmmddwwmmmmwwddmmmddk',
+'kddmmmddkkmmmmkkddmmmddk',
+'kddmmmmmmmmmmmmmmmmmmmddk',
+'.kddmmmddddddddddmmmddk.',
+'..kddmmmmmmmmmmmmmmddk..',
+'..kddmmddmmmmmmddmmddk..',
+'.kkdmmddkkkddkkkddmmdkk.',
+'kdddkdk.....kk....kdkdddk',
+'kddk.kkk...kddk...kk.kddk',
+'.kk...kddk.kddk...kk..kk.',
+'.....kddddkkkkddddk......',
+'......kddddddddddk.......',
+'.......kkddddddkk........',
+'.......kddk..kddk........',
+'......kdddk..kdddk.......',
+'.....kkkkk....kkkkk......'],
+ bossCrystal:[
+'............kk...........',
+'...........kwwk..........',
+'.........kkdwwdkk........',
+'.........kdmmmmddk.......',
+'....kk...kddmwwddk...kk..',
+'...kwwk..kddmwwddk..kwwk.',
+'..kdwwdk.kdmmmmddk.kdwwdk',
+'.kddmmddkkddddddddkkddmdk',
+'kddmmmmmmmddddddmmmmmmmddk',
+'kddmmmwwmmmmmmmmwwmmmdddk',
+'.kddmmkkmmmwwmmmmmkkmddk.',
+'..kddmmmmmmkkmmmmmmdddk..',
+'..kddmmmmmmmmmmmmmmdddk..',
+'.kddmmkkkkddddddkkkkmddk.',
+'kddmmkwwmmkddddkwwmmkddk',
+'kddmmkkkkmkddddkkkkmkddk',
+'.kddmmmmmmddddddmmmmmddk.',
+'..kkddddddmmmmmmddddddkk.',
+'....kddmmmddddddmmmddk...',
+'.....kddmmkkkkkkmdddk....',
+'.....kdddk....kddddk.....',
+'....kddddk....kddddk.....',
+'...kdddddkk..kkdddddk....',
+'...kkkkkkkk..kkkkkkkk....'],
+ bossWind:[
+'..........kkkk..........',
+'.........kwwwwk.........',
+'.......kkdwwwwdkk.......',
+'....kkkddmmmmmmddkkk....',
+'..kkdmmddddddddddmmdkk..',
+'.kddmmmmmmmmmmmmmmmmdddk.',
+'kddmmmmkkddmmmmddkkmmmddk',
+'kddddmwwwwmmmmwwwwmdddddk',
+'.kdddmmkkmmmmmmkkmmmdddk.',
+'.kkddmmmmmmmmmmmmmmddkk..',
+'kddkkdddddmmmmddddddkkddk',
+'kdddkkddddmmmmddddkkddddk',
+'.kdddk.kkddmmddkk.kdddk.',
+'..kddkkdddmwwmdddkddkk..',
+'...kkdddddkkkkddddddkk...',
+'.....kddmmmmmmmmddk......',
+'.....kddmmmmmmmmddk......',
+'.....kdddmmmmmmdddk......',
+'......kkddddddddkk.......',
+'.......kddk..kddk........',
+'......kdddk..kdddk.......',
+'.....kddddk..kddddk......',
+'....kddddkk..kkddddk.....',
+'....kkkkkkk..kkkkkkk.....']
+};
+function spriteDraw(rows,x,y,mirror=false,scale=1){
+ const shades={k:K.ink,d:K.deep,m:K.mid,l:K.light,w:K.white};
+ const height=rows.length,width=Math.max(...rows.map(s=>s.length));
+ x=Math.round(x);y=Math.round(y);
+ for(let j=0;j<height;j++){
+  const r=rows[j];let i=0;
+  while(i<r.length){let c=r[i];if(!shades[c]){i++;continue}let start=i;while(i<r.length&&r[i]===c)i++;
+   const rx=mirror?width-i:start;
+   px(x+rx*scale,y+j*scale,(i-start)*scale,scale,shades[c]);
+  }
+ }
+}
+function heroFrame(p){if(p.vy<-.8&&!p.ground)return SPR.heroJump;if(p.vy>1.2&&!p.ground)return SPR.heroFall;
+ if(p.ground&&Math.abs(p.vx)>.42)return ((game.frame/(Math.abs(p.vx)>1.5?4:7))|0)%2===0?SPR.heroWalkA:SPR.heroWalkB;
+ return SPR.heroIdle;}
+function drawPlayer(p){
+ if(p.invul>0&&p.invul<65&&game.frame%8===0)return;
+ const x=Math.round(p.x-game.cam),y=Math.round(p.y);
+ if(p.ship){spriteDraw(SPR.ship,x-4,y-3,game.frame%50>25);if(game.frame%5<3){px(x-7,y+3,3,2,K.white);px(x-9,y+4,2,1,K.mid)}return;}
+ if(p.shield){const flick=game.frame%24<12?K.white:K.mid;for(let a=0;a<12;a++){const ang=a*Math.PI/6+game.frame*.035;px(x+3+Math.round(Math.cos(ang)*11),y+3+Math.round(Math.sin(ang)*13),2,2,flick);}}
+ if(p.power){px(x-(p.face===1?5:0),y-15,7,6,K.mid);px(x-(p.face===1?5:0)+2,y-13,3,2,K.white);}
+ // Render a detailed 18x20 hero without changing the tested 7x12 collision hitbox.
+ spriteDraw(heroFrame(p),x-5,y+p.h-20,p.face<0);
+ if(p.power){px(x+(p.face>0?-3:7),y+p.h-10,3,2,K.white)}
+}
+function drawEnemy(e){
+ const x=Math.round(e.x-game.cam),y=Math.round(e.y);if(e.dead){if(e.timer>0){px(x-1,y+7,10,2,K.ink);px(x+2,y+6,4,1,K.mid)}return;}
+ const names=['slime','beetle','wisp','spiker','bat'];const art=SPR[names[e.kind]];
+ const flutter=(e.kind===2||e.kind===4)?(game.frame%12<6?1:-1):0;
+ spriteDraw(art,x-2,y+8-art.length+flutter,e.vx<0);
+ if(e.kind===3&&e.hp>1){px(x,y-4,3,2,K.white)}
+}
+function drawBoss(b){
+ if(b.invul>0&&game.frame%6<3)return;
+ const arts=[SPR.bossScarab,SPR.bossTree,SPR.bossWind,SPR.bossCrystal],a=arts[b.world],x=Math.round(b.x-game.cam),y=Math.round(b.y);
+ const bounce=Math.abs(Math.sin(game.frame*.075+b.world))*1.5;
+ spriteDraw(a,x-(Math.max(...a.map(r=>r.length))-17)/2,y+16-a.length-Math.round(bounce),b.vx>0);
+ for(let i=0;i<b.maxhp;i++){px(x-2+i*4,y-a.length-3,3,3,i<b.hp?K.ink:K.mid);if(i<b.hp)px(x-1+i*4,y-a.length-2,1,1,K.white)}
+}
+
+function drawRelic(r){if(!r||r.got)return;
+ const x=Math.round(r.x-game.cam),y=Math.round(r.y+Math.sin(game.frame*.09+r.phase)*3);
+ if(x<-15||x>175)return; const a=K.ink,b=game.frame%24<12?K.white:K.light;
+ px(x+4,y,4,2,a);px(x+3,y+2,6,2,b);px(x,y+4,12,3,a);px(x+2,y+7,8,3,b);px(x+4,y+10,4,3,a);
+ px(x+5,y+4,2,3,K.white);if(game.frame%14<7){px(x-3,y+1,2,2,K.white);px(x+12,y+9,2,2,K.white)}
+}
+function drawCoin(c){if(c.got)return;const x=Math.round(c.x-game.cam),y=Math.round(c.y+Math.sin(game.frame*.12+c.phase)*1.3);if(x<-8||x>168)return;px(x+1,y,5,7,K.deep);px(x+2,y+1,3,5,K.white);px(x+3,y+2,1,3,K.mid)}
+function drawPickup(o){if(o.got)return;const x=Math.round(o.x-game.cam),y=Math.round(o.y+Math.sin(game.frame*.09)*2);if(x<-8||x>166)return;if(o.type==='shield'){px(x+1,y+1,6,7,K.deep);px(x+2,y+2,4,5,K.white);px(x+3,y+3,2,3,K.mid)}else{px(x+2,y,4,2,K.white);px(x,y+2,8,4,K.deep);px(x+2,y+6,4,3,K.mid);px(x+3,y+2,2,3,K.white)}}
+function drawDecor(){const map=game.map,world=map.world;
+ // Small world-specific decorations. Pixel positions are deterministic.
+ for(let i=Math.floor(game.cam/96)-1;i<Math.floor((game.cam+160)/96)+2;i++){
+  const x=i*96+23-Math.round(game.cam);if(x< -30||x>170||i<0)continue;
+  if(world===0){cactus(x,128);}
+  else if(world===1){palm(x,127);px(x+18,113,3,15,K.deep);px(x+21,118,5,9,K.mid);}
+  else if(world===2){cloud(x,105,.6);}
+  else{tower(x,128,35);}
+ }
+ const mid=map.checkpoint-game.cam;if(mid>=-10&&mid<169){px(mid,99,2,29,K.ink);px(mid+2,101,10,7,game.checkpointUsed?K.white:K.deep);px(mid+3,103,7,3,K.mid)}
+ const x=Math.round(map.flagX-game.cam);if(x>-18&&x<178){px(x,71,2,57,K.ink);px(x+2,72,14,9,K.deep);px(x+3,74,11,5,K.mid);px(x+8,75,3,3,K.white);px(x-3,126,10,2,K.ink)}}
+function render(){background();if(game.map){
+ const left=Math.max(0,Math.floor(game.cam/8)-1),right=Math.min(game.map.width,Math.ceil((game.cam+W)/8)+2);
+ for(let x=left;x<right;x++)for(let y=7;y<18;y++){const id=tile(game.map,x,y);if(id)drawTile(id,x*8-Math.round(game.cam),y*8,x,y)}
+ for(const c of game.coinsOnMap)drawCoin(c);for(const p of game.pickups)drawPickup(p);drawRelic(game.relic);drawDecor();
+ for(const e of game.enemies)if(e.x>game.cam-16&&e.x<game.cam+W+16)drawEnemy(e);
+ if(game.boss&&!game.boss.dead)drawBoss(game.boss);
+ for(const b of game.bullets){px(b.x-game.cam,b.y,4,4,K.ink);px(b.x-game.cam+1,b.y+1,2,2,K.white)}
+ for(const b of game.enemyBullets){px(b.x-game.cam,b.y,4,4,K.deep);px(b.x-game.cam+1,b.y+1,2,2,K.white)}
+ for(const e of game.effects){px(e.x-game.cam,e.y,e.type==='power'?5:3,e.type==='power'?5:3,e.type==='hurt'?K.ink:K.white)}
+ if(game.player)drawPlayer(game.player);
+ }
+ if(game.flash>0&&game.frame%3===0){px(0,13,160,2,K.white)}
+ px(0,0,160,13,K.ink);ctx.font='bold 8px monospace';ctx.textBaseline='top';ctx.fillStyle=K.white;
+ ctx.fillText('P'+String(game.score).padStart(6,'0'),3,3);ctx.fillText('◈'+String(game.coins).padStart(2,'0'),73,3);ctx.fillText((Math.floor(game.level/3)+1)+'-'+(game.level%3+1),105,3);ctx.fillText(String(Math.max(0,360-Math.floor(game.worldTimer/60))).padStart(3,'0'),138,3);
+ ctx.fillStyle=K.mid;ctx.fillText('♥'+game.lives,4,16);if(game.relics)ctx.fillText('✦'+game.relics.toString(2).replace(/0/g,'').length+'/12',124,16);
+ px(0,140,160,4,K.deep);if(game.map&&game.player)px(0,140,Math.round(160*game.player.x/game.map.flagX),4,K.mid);
+}
+let last=0,acc=0;
+function loop(time){if(!last)last=time;acc+=Math.min(60,time-last);last=time;let loops=0;while(acc>=1000/60&&loops<4){update();acc-=1000/60;loops++}render();requestAnimationFrame(loop)}
+function setKey(which,on){if(which==='jump'&&on&&!key.jump)key.jumpPressed=true;key[which]=on;const id={left:'left',right:'right',jump:'a',run:'b'}[which];$(id).classList.toggle('active',on)}
+function showMap(){
+ if(game.mode==='map'||game.mode==='transition'||game.mode==='over'||game.mode==='won')return;
+ const box=$('levelPicker');let buttons='';
+ for(let i=0;i<12;i++){
+  const locked=i>game.unlocked;const done=i<game.unlocked;
+  buttons+=`<button type="button" data-stage="${i}" ${locked?'disabled':''} class="${i===game.level?'selected':''}">${locked?'🔒':(Math.floor(i/3)+1)+'-'+(i%3+1)}<span class="small">${done?'✓ COMPLETA':locked?'BLOQUEADA': 'DISPONIBLE'}</span></button>`;
+ }
+ box.innerHTML=buttons;box.hidden=false;
+ game.previousMode=game.mode;game.mode='map';resetInput();
+ overlay('MAPA DEL REINO',`Elige una fase desbloqueada. Reliquias: ${game.relics.toString(2).replace(/0/g,'').length}/12. El progreso se guarda en este dispositivo.`,'↩ VOLVER');
+ $('newBtn').hidden=true;
+}
+function resetInput(){for(const k of ['left','right','jump','run'])setKey(k,false);key.jumpPressed=false}
+const keymap={ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',ArrowUp:'jump',Space:'jump',KeyW:'jump',KeyZ:'run',KeyX:'run',ShiftLeft:'run',ShiftRight:'run'};
+window.addEventListener('keydown',e=>{if(keymap[e.code]){e.preventDefault();if(!e.repeat)setKey(keymap[e.code],true)}if(e.code==='Escape'||e.code==='KeyP'){e.preventDefault();togglePause()}});
+window.addEventListener('keyup',e=>{if(keymap[e.code]){e.preventDefault();setKey(keymap[e.code],false)}});
+for(const [id,k] of [['left','left'],['right','right'],['a','jump'],['b','run']]){
+ const el=$(id);el.addEventListener('pointerdown',e=>{e.preventDefault();try{el.setPointerCapture(e.pointerId)}catch(_){}setKey(k,true)});
+ for(const type of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(type,e=>{e.preventDefault();setKey(k,false)});el.addEventListener('contextmenu',e=>e.preventDefault());
+}
+function togglePause(){if(game.mode==='playing'){game.mode='paused';resetInput();$('pauseBtn').textContent='▶ SEGUIR';overlay('EN PAUSA','Tu progreso de fases queda guardado automáticamente.','▶ CONTINUAR')}
+ else if(game.mode==='paused'){game.mode='playing';$('pauseBtn').textContent='Ⅱ PAUSA';hideOverlay()}}
+$('levelPicker').addEventListener('click',e=>{const b=e.target.closest('button[data-stage]');if(!b||b.disabled||game.mode!=='map')return;const i=Number(b.dataset.stage);if(!Number.isInteger(i)||i<0||i>game.unlocked)return;$('levelPicker').hidden=true;newGame(i)});
+$('mapBtn').addEventListener('click',showMap);
+$('mainBtn').addEventListener('click',()=>{
+ if(game.mode==='map'){const old=game.previousMode;game.mode=old==='playing'?'playing':old==='paused'?'paused':'menu';$('levelPicker').hidden=true;if(game.mode==='playing'){hideOverlay()}else if(game.mode==='paused')overlay('EN PAUSA','Tu progreso se guarda al terminar cada fase.','▶ CONTINUAR');else overlay('PICO LAND DELUXE','Explora cuatro mundos, 12 fases y 12 reliquias secretas.','▶ EMPEZAR PARTIDA');return}
+ if(game.mode==='paused'){togglePause();return}
+ if(game.mode==='transition'){loadLevel(game.level+1,true);game.mode='playing';hideOverlay();beep('start');return}
+ if(game.mode==='menu'&&game.unlocked>0){newGame(game.unlocked);return}
+ newGame();
+});
+$('newBtn').addEventListener('click',()=>newGame());
+$('pauseBtn').addEventListener('click',togglePause);
+$('soundBtn').addEventListener('click',()=>{muted=!muted;$('soundBtn').textContent=muted?'♪ OFF':'♪ ON';if(!muted)beep('coin')});
+window.addEventListener('blur',()=>{resetInput();if(game.mode==='playing')togglePause()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&game.mode==='playing')togglePause()});
+const demo=buildLevel(0);game.map=demo.map;game.coinsOnMap=demo.coins;game.pickups=demo.pickups;game.enemies=demo.enemies;game.player=makePlayer(16);game.boss=demo.boss;updateHud();
+if(game.unlocked>0){$('mainBtn').textContent=`▶ CONTINUAR DESDE ${Math.floor(game.unlocked/3)+1}-${game.unlocked%3+1}`;$('newBtn').hidden=false}
+if(location.search.includes('debug=1'))window.__picoDebug={state:()=>game,config,buildLevel,loadLevel,newGame,update,death,clearLevel,bossHit,setKey,makePlayer,showMap,save};
+requestAnimationFrame(loop);
+})();
+
+
+
+</script>
+</body>
+</html>
