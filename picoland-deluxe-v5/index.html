@@ -227,7 +227,7 @@ function shatterBlock(col,row){
  if(game.debris.length<100){
   for(let i=0;i<4;i++)game.debris.push({x:col*8+(i%2)*4,y:row*8+(i>>1)*4,
    vx:(i%2?-1:1)*(0.65+.23*(i>>1)),vy:-2.05-(i<2?.62:0),
-   life:47,quadrant:i,world:game.map.world});
+   life:47,quadrant:i,world:game.map.world,sourceCol:8+((col+row)%3)});
  }
  game.shake=Math.max(game.shake,2);effect(col*8+4,row*8+3,'break');beep('break');score(40);return true;
 }
@@ -686,7 +686,7 @@ function drawDebris(){
  for(const f of game.debris){
   const x=Math.round(f.x-game.cam),y=Math.round(f.y);
   if(x< -6||x>166)continue;
-  const col=8+((Math.floor(f.x/8)+Math.floor(f.y/8))%3);
+  const col=f.sourceCol;
   if(PICO_ITEM_ATLAS.complete&&PICO_ITEM_ATLAS.naturalWidth){
    ctx.drawImage(PICO_ITEM_ATLAS,col*8+(f.quadrant%2)*4,f.world*8+Math.floor(f.quadrant/2)*4,4,4,x,y,4,4);
   }else{px(x,y,4,4,f.quadrant%2?K.deep:K.mid);px(x,y,3,1,K.white);}
